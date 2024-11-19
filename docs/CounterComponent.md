@@ -3,6 +3,9 @@
 ## Overview
 This component is an Angular counter that integrates with NgRx for state management and uses `localStorage` to persist the counter's value across sessions. It ensures the state is saved when updated and restored on application load.
 
+![Counter Diagram](images/counter-img.png)
+
+
 ---
 
 ## Component: `MyCounterComponent`
