@@ -61,8 +61,10 @@ export class MyCounterComponent implements OnDestroy {
   }
 }
 
+---
+
 ### code
-Reducer: counterReducer
+```Reducer: counterReducer
 import { createReducer, on } from '@ngrx/store';
 import { increment, decrement, reset } from './counter.actions';
 
@@ -77,6 +79,8 @@ export const counterReducer = createReducer(
   on(reset, () => 0)
 );
 
+---
+
 ### code 
 Component Template (my-counter.component.html):
 <div>
@@ -85,6 +89,8 @@ Component Template (my-counter.component.html):
   <button (click)="decrement()">Decrement</button>
   <button (click)="reset()">Reset</button>
 </div>
+
+---
 
 ### code
 counter.actions.ts
