@@ -19,6 +19,53 @@ The component uses @ngrx/store for managing state in a predictable way.
 Saves the counter value to localStorage whenever it changes.
 Restores the counter value from localStorage on app initialization.
 
+### code
+
+import { Component, OnDestroy } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { increment, decrement, reset } from '../counter.actions';
+
+@Component({
+  selector: 'app-my-counter',
+  templateUrl: './my-counter.component.html',
+  styleUrls: ['./my-counter.component.scss']
+})
+export class MyCounterComponent implements OnDestroy {
+  count$: Observable<number>;
+  private subscription: Subscription;
+
+  constructor(private store: Store<{ count: number }>) {
+    // Select count state from store
+    this.count$ = store.select('count');
+
+    // Subscribe to store changes and update localStorage
+    this.subscription = this.store.select('count').subscribe((count) => {
+      localStorage.setItem('counterValue', count.toString());
+    });
+  }
+
+  increment() {
+    this.store.dispatch(increment());
+  }
+
+  decrement() {
+    this.store.dispatch(decrement());
+  }
+
+  reset() {
+    this.store.dispatch(reset());
+  }
+
+  ngOnDestroy() {
+    // Cleanup subscription to prevent memory leaks
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+}
+
+
 # Reducer: counterReducer
 
 ## Purpose:
