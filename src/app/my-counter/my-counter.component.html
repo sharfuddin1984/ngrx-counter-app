@@ -1,0 +1,12 @@
+<section>
+  <div class="container">
+    <div class="count-value">{{ count$ | async }}</div>
+    <div class="counter">
+      <button class="btn-left" (click)="increment()">+</button>
+      <button class="btn-right" (click)="decrement()">-</button>
+    </div>
+  </div>
+  <button class="reset-counter" (click)="reset()">
+    <img src="../../assets/refresh-icon.svg" alt="">
+  </button>
+</section>

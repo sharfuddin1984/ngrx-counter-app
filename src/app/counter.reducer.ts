@@ -1,0 +1,16 @@
+import { createReducer, on } from "@ngrx/store";
+import { increment, decrement, reset } from "./counter.actions";
+
+//export const initialState = 0;
+
+// Load initial value from localStorage
+const initialCounterValue = parseInt(localStorage.getItem('counterValue') || '0', 10);
+
+export const initialState = initialCounterValue;
+
+export const counterReducer = createReducer(
+  initialState,
+  on(increment, (state) => state + 1),
+  on(decrement, (state) => state - 1),
+  on(reset, (state) => 0)
+);
