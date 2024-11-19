@@ -61,45 +61,6 @@ export class MyCounterComponent implements OnDestroy {
   }
 }
 
----
-
-### Code:
-```typescript
-import { createReducer, on } from '@ngrx/store';
-import { increment, decrement, reset } from './counter.actions';
-
-const initialCounterValue = parseInt(localStorage.getItem('counterValue') || '0', 10);
-
-export const initialState = initialCounterValue;
-
-export const counterReducer = createReducer(
-  initialState,
-  on(increment, (state) => state + 1),
-  on(decrement, (state) => state - 1),
-  on(reset, () => 0)
-);
-
----
-
-### code 
-```html
-Component Template (my-counter.component.html):
-<div>
-  <h1>Counter: {{ count$ | async }}</h1>
-  <button (click)="increment()">Increment</button>
-  <button (click)="decrement()">Decrement</button>
-  <button (click)="reset()">Reset</button>
-</div>
-
----
-
-### code
-```typescript
-import { createAction } from '@ngrx/store';
-
-export const increment = createAction('[Counter] Increment');
-export const decrement = createAction('[Counter] Decrement');
-export const reset = createAction('[Counter] Reset');
 
 
 
