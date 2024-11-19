@@ -59,10 +59,10 @@ export class MyCounterComponent implements OnDestroy {
       this.subscription.unsubscribe();
     }
   }
-}```
+}
 
 ### code
-```Reducer: counterReducer
+Reducer: counterReducer
 import { createReducer, on } from '@ngrx/store';
 import { increment, decrement, reset } from './counter.actions';
 
@@ -75,19 +75,19 @@ export const counterReducer = createReducer(
   on(increment, (state) => state + 1),
   on(decrement, (state) => state - 1),
   on(reset, () => 0)
-);```
+);
 
 ### code 
-``` Component Template (my-counter.component.html):
+Component Template (my-counter.component.html):
 <div>
   <h1>Counter: {{ count$ | async }}</h1>
   <button (click)="increment()">Increment</button>
   <button (click)="decrement()">Decrement</button>
   <button (click)="reset()">Reset</button>
-</div>```
+</div>
 
 ### code
-```counter.actions.ts
+counter.actions.ts
 import { createAction } from '@ngrx/store';
 
 export const increment = createAction('[Counter] Increment');
